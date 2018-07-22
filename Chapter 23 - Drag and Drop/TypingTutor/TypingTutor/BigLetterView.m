@@ -253,13 +253,20 @@
 	// Put the string on the pasteboard
 	[self writeToPasteboard:pb];
 	// Start the drag
-	[self dragImage:anImage
-				 at:p
-			 offset:NSZeroSize
-			  event:mouseDownEvent
-		 pasteboard:pb
-			 source:self
-		  slideBack:YES];
+//    [self dragImage:anImage
+//                 at:p
+//             offset:NSZeroSize
+//              event:mouseDownEvent
+//         pasteboard:pb
+//             source:self
+//          slideBack:YES];
+    
+    NSDraggingItem *dragItem = [[NSDraggingItem alloc] initWithPasteboardWriter:string];
+    [dragItem setDraggingFrame:NSMakeRect(p.x, p.y, s.width, s.height) contents:anImage];
+    
+    NSDraggingSession *draggingSession = [self beginDraggingSessionWithItems:[NSArray arrayWithObject:dragItem] event:mouseDownEvent source:self];
+    draggingSession.animatesToStartingPositionsOnCancelOrFail = YES;
+    draggingSession.draggingFormation = NSDraggingFormationNone;
 }
 
 - (void)draggedImage:(NSImage *)image
