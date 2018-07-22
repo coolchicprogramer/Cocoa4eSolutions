@@ -249,10 +249,10 @@
 	p.x = p.x - s.width/2;
 	p.y = p.y - s.height/2;
 	// Get the pasteboard
-	NSPasteboard *pb = [NSPasteboard pasteboardWithName:NSDragPboard];
-	// Put the string on the pasteboard
-	[self writeToPasteboard:pb];
-	// Start the drag
+//    NSPasteboard *pb = [NSPasteboard pasteboardWithName:NSDragPboard];
+//    // Put the string on the pasteboard
+//    [self writeToPasteboard:pb];
+//    // Start the drag
 //    [self dragImage:anImage
 //                 at:p
 //             offset:NSZeroSize
